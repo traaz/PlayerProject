@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.ProjectPlayers.business.abstracts.PlayerService;
 import com.example.ProjectPlayers.business.request.CreatePlayerRequest;
+import com.example.ProjectPlayers.business.request.UpdatePlayerRequest;
 import com.example.ProjectPlayers.business.response.GetAllPlayerResponse;
 import com.example.ProjectPlayers.business.response.GetByIdResponse;
 import com.example.ProjectPlayers.core.utilities.mappers.ModelMapperService;
@@ -42,6 +43,20 @@ public class PlayerManager implements PlayerService{
 		
 		Player player = this.mapperService.forRequest().map(createPlayerRequest, Player.class);
 		this.playerRepository.save(player);
+	}
+
+	@Override
+	public void update(int id, UpdatePlayerRequest updatePlayerRequest) {
+		Player player = playerRepository.findById(id).get();
+		player = this.mapperService.forRequest().map(updatePlayerRequest, Player.class);
+		this.playerRepository.save(player);
+		
+	}
+
+	@Override
+	public void delete(int id) {
+		playerRepository.deleteById(id);
+		
 	}
 
 }
