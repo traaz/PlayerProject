@@ -14,5 +14,7 @@ public class GetAllPlayerResponse {
 	private String name;
 	private String surname;
 	private String image_url;
+	private String teamName;
+	private String positionName;
 
 }
