@@ -10,6 +10,7 @@ import com.example.ProjectPlayers.business.request.CreatePlayerRequest;
 import com.example.ProjectPlayers.business.request.UpdatePlayerRequest;
 import com.example.ProjectPlayers.business.response.GetAllPlayerResponse;
 import com.example.ProjectPlayers.business.response.GetByIdResponse;
+import com.example.ProjectPlayers.business.response.GetPlayersPositionResponse;
 import com.example.ProjectPlayers.core.utilities.mappers.ModelMapperService;
 import com.example.ProjectPlayers.dataAccess.abstracts.PlayerRepository;
 import com.example.ProjectPlayers.entities.Player;
@@ -57,6 +58,30 @@ public class PlayerManager implements PlayerService{
 	public void delete(int id) {
 		playerRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<GetPlayersPositionResponse> getPlayersPositionResponse(String position) {
+		List<Player> players = playerRepository.findByPositionName(position);
+		
+		//return players;
+		
+		List<GetPlayersPositionResponse> responses = players.stream()
+				.map(player->this.mapperService.forResponse()
+						.map(player, GetPlayersPositionResponse.class)).collect(Collectors.toList());
+		
+		return responses;
+	}
+
+	@Override
+	public List<GetPlayersPositionResponse> getPlayersPositionResponse(int id) {
+		List<Player> players = playerRepository.findByPositionId(id);
+		
+		List<GetPlayersPositionResponse> responses = players.stream()
+				.map(player->this.mapperService.forResponse()
+						.map(player, GetPlayersPositionResponse.class)).collect(Collectors.toList());
+		
+		return responses;
 	}
 
 }

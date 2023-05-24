@@ -8,6 +8,7 @@ import com.example.ProjectPlayers.business.request.CreatePlayerRequest;
 import com.example.ProjectPlayers.business.request.UpdatePlayerRequest;
 import com.example.ProjectPlayers.business.response.GetAllPlayerResponse;
 import com.example.ProjectPlayers.business.response.GetByIdResponse;
+import com.example.ProjectPlayers.business.response.GetPlayersPositionResponse;
 import com.example.ProjectPlayers.entities.Player;
 
 public interface PlayerService {
@@ -16,4 +17,7 @@ public interface PlayerService {
 	void add(CreatePlayerRequest createPlayerRequest);
 	void update(int id, UpdatePlayerRequest updatePlayerRequest);
 	void delete(int id);
+	List<GetPlayersPositionResponse> getPlayersPositionResponse(String position);
+	List<GetPlayersPositionResponse> getPlayersPositionResponse(int id);
+
 }

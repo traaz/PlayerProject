@@ -15,6 +15,7 @@ import com.example.ProjectPlayers.business.request.CreatePlayerRequest;
 import com.example.ProjectPlayers.business.request.UpdatePlayerRequest;
 import com.example.ProjectPlayers.business.response.GetAllPlayerResponse;
 import com.example.ProjectPlayers.business.response.GetByIdResponse;
+import com.example.ProjectPlayers.business.response.GetPlayersPositionResponse;
 import com.example.ProjectPlayers.entities.Player;
 
 import lombok.AllArgsConstructor;
@@ -48,4 +49,15 @@ public class PlayerController {
 	public void delete(@PathVariable int id) {
 		playerService.delete(id);
 	}
+	@GetMapping("{position}")
+	public List<GetPlayersPositionResponse> getByPlayersPosition(@PathVariable String position) {
+		return playerService.getPlayersPositionResponse(position);
+		
+	}
+	@GetMapping("/position/{id}")
+	public List<GetPlayersPositionResponse> getByPlayersPosition(@PathVariable int id) {
+		return playerService.getPlayersPositionResponse(id);
+		
+	}
+	
 }
