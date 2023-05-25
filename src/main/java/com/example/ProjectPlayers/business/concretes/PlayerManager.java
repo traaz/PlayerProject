@@ -11,6 +11,8 @@ import com.example.ProjectPlayers.business.request.UpdatePlayerRequest;
 import com.example.ProjectPlayers.business.response.GetAllPlayerResponse;
 import com.example.ProjectPlayers.business.response.GetByIdResponse;
 import com.example.ProjectPlayers.business.response.GetPlayersPositionResponse;
+import com.example.ProjectPlayers.business.response.GetPlayersTeamAndPositionResponse;
+import com.example.ProjectPlayers.business.response.GetPlayersTeamResponse;
 import com.example.ProjectPlayers.core.utilities.mappers.ModelMapperService;
 import com.example.ProjectPlayers.dataAccess.abstracts.PlayerRepository;
 import com.example.ProjectPlayers.entities.Player;
@@ -61,7 +63,7 @@ public class PlayerManager implements PlayerService{
 	}
 
 	@Override
-	public List<GetPlayersPositionResponse> getPlayersPositionResponse(String position) {
+	public List<GetPlayersPositionResponse> getPlayersPositionNameResponse(String position) {
 		List<Player> players = playerRepository.findByPositionName(position);
 		
 		//return players;
@@ -74,13 +76,34 @@ public class PlayerManager implements PlayerService{
 	}
 
 	@Override
-	public List<GetPlayersPositionResponse> getPlayersPositionResponse(int id) {
+	public List<GetPlayersPositionResponse> getPlayersPositionIdResponse(int id) {
 		List<Player> players = playerRepository.findByPositionId(id);
 		
 		List<GetPlayersPositionResponse> responses = players.stream()
 				.map(player->this.mapperService.forResponse()
 						.map(player, GetPlayersPositionResponse.class)).collect(Collectors.toList());
 		
+		return responses;
+	}
+
+	@Override
+	public List<GetPlayersTeamResponse> getPlayersTeamNameResponse(String team) {
+		List<Player> players = playerRepository.findByTeamName(team);
+		List<GetPlayersTeamResponse> responses = players.stream().map(player->this.mapperService.forResponse().map(player, GetPlayersTeamResponse.class)).collect(Collectors.toList());
+		return responses;
+	}
+
+	@Override
+	public List<GetPlayersTeamResponse> getPlayersTeamIdResponse(int id) {
+		List<Player> players = playerRepository.findByTeamId(id);
+		List<GetPlayersTeamResponse> responses = players.stream().map(player->this.mapperService.forResponse().map(player, GetPlayersTeamResponse.class)).collect(Collectors.toList());
+		return responses;
+	}
+
+	@Override
+	public List<GetPlayersTeamAndPositionResponse> getPlayersTeamAndPositionResponse(int id, String position) {
+		List<Player> players = playerRepository.findByTeamIdAndPositionName(id, position);
+		List<GetPlayersTeamAndPositionResponse> responses = players.stream().map(player->this.mapperService.forResponse().map(player, GetPlayersTeamAndPositionResponse.class)).collect(Collectors.toList());
 		return responses;
 	}
 

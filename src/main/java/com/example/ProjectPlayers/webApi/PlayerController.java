@@ -16,6 +16,8 @@ import com.example.ProjectPlayers.business.request.UpdatePlayerRequest;
 import com.example.ProjectPlayers.business.response.GetAllPlayerResponse;
 import com.example.ProjectPlayers.business.response.GetByIdResponse;
 import com.example.ProjectPlayers.business.response.GetPlayersPositionResponse;
+import com.example.ProjectPlayers.business.response.GetPlayersTeamAndPositionResponse;
+import com.example.ProjectPlayers.business.response.GetPlayersTeamResponse;
 import com.example.ProjectPlayers.entities.Player;
 
 import lombok.AllArgsConstructor;
@@ -49,15 +51,27 @@ public class PlayerController {
 	public void delete(@PathVariable int id) {
 		playerService.delete(id);
 	}
-	@GetMapping("{position}")
-	public List<GetPlayersPositionResponse> getByPlayersPosition(@PathVariable String position) {
-		return playerService.getPlayersPositionResponse(position);
+	/*@GetMapping("{position}")
+	public List<GetPlayersPositionResponse> getByPlayersPositionName(@PathVariable String position) {
+		return playerService.getPlayersPositionNameResponse(position);
+		
+	}*/
+	@GetMapping("/position/{id}")
+	public List<GetPlayersPositionResponse> getByPlayersPositionId(@PathVariable int id) {
+		return playerService.getPlayersPositionIdResponse(id);
 		
 	}
-	@GetMapping("/position/{id}")
-	public List<GetPlayersPositionResponse> getByPlayersPosition(@PathVariable int id) {
-		return playerService.getPlayersPositionResponse(id);
-		
+	/*@GetMapping("/team/{team}")
+	public List<GetPlayersTeamResponse> getPlayersTeamName(@PathVariable String team){
+		return playerService.getPlayersTeamNameResponse(team);
+	}*/
+	@GetMapping("/team/{id}")
+	public List<GetPlayersTeamResponse> getPlayersTeamId(@PathVariable int id){
+		return playerService.getPlayersTeamIdResponse(id);
+	}
+	@GetMapping("team/{id}/{position}")
+	public List<GetPlayersTeamAndPositionResponse> getPlayersTeamAndPositionResponse(@PathVariable int id, @PathVariable String position){
+		return playerService.getPlayersTeamAndPositionResponse(id, position);
 	}
 	
 }
