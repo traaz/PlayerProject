@@ -12,5 +12,7 @@ public interface PlayerRepository extends JpaRepository<Player, Integer>{
 	List<Player> findByTeamName(String name);
 	List<Player> findByTeamId(int id);
 	List<Player> findByTeamIdAndPositionName(int id, String name);
+	boolean existsByTeamId(int id);
+	boolean existsByPositionId(int id);
 
 }
