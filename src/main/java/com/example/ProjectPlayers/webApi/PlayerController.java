@@ -24,6 +24,8 @@ import lombok.AllArgsConstructor;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/players")
 @AllArgsConstructor
@@ -40,7 +42,7 @@ public class PlayerController {
 		return playerService.getById(id);
 	}
 	@PostMapping()
-	public void add(@RequestBody CreatePlayerRequest createPlayerRequest) {
+	public void add(@RequestBody @Valid CreatePlayerRequest createPlayerRequest) {
 		playerService.add(createPlayerRequest);
 	}
 	@PutMapping("/{id}")

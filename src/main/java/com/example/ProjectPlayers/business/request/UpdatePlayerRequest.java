@@ -15,11 +15,11 @@ public class UpdatePlayerRequest {
 	private int id;
 	@NotNull
 	@NotBlank
-	@Size(min = 3)
+	@Size(min = 3, max =50)
 	private String name;
 	@NotNull
 	@NotBlank
-	@Size(min = 3)
+	@Size(min = 3, max =50)
 	private String surname;
 	private String image_url;
 	@NotNull

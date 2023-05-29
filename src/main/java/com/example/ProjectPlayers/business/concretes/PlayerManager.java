@@ -48,7 +48,7 @@ public class PlayerManager implements PlayerService{
 	
 		this.businessRules.checkIfTeamIdExists(createPlayerRequest.getTeamId());
 		this.businessRules.checkIfPositionIdExists(createPlayerRequest.getPositionId());
-		
+		this.businessRules.checkIfPlayerExists(createPlayerRequest.getName(), createPlayerRequest.getSurname(), createPlayerRequest.getTeamId());
 		Player player = this.mapperService.forRequest().map(createPlayerRequest, Player.class);
 		this.playerRepository.save(player);
 	}

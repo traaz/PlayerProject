@@ -16,7 +16,7 @@ public class UpdateTeamRequest {
 	private int id;
 	@NotNull
 	@NotBlank
-	@Size(min = 3)
+	@Size(min = 3, max =50)
 	private String name;
 
 }

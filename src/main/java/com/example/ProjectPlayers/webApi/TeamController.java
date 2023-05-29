@@ -2,6 +2,8 @@ package com.example.ProjectPlayers.webApi;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +37,7 @@ public class TeamController {
 		return teamService.getByIdTeam(id);
 	}
 	@PostMapping()
-	public void add(@RequestBody CreateTeamRequest createTeamRequest) {
+	public void add(@RequestBody @Valid CreateTeamRequest createTeamRequest) {
 		teamService.add(createTeamRequest);
 	}
 	@DeleteMapping("/{id}")

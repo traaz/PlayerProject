@@ -14,18 +14,16 @@ import lombok.NoArgsConstructor;
 public class CreatePlayerRequest {
 	@NotNull
 	@NotBlank
-	@Size(min = 3)
+	@Size(min = 3, max =50)
 	private String name;
 	@NotNull
 	@NotBlank
-	@Size(min = 3)
+	@Size(min = 3,  max =50)
 	private String surname;
 	private String image_url;
 	@NotNull
-	@NotBlank
 	private int teamId;
 	@NotNull
-	@NotBlank
 	private int positionId;
 	
 
