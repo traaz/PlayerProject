@@ -67,7 +67,7 @@ public class PlayerManager implements PlayerService{
 		
 	}
 
-	@Override
+/*	@Override
 	public List<GetPlayersPositionResponse> getPlayersPositionNameResponse(String position) {
 		List<Player> players = playerRepository.findByPositionName(position);
 		
@@ -78,7 +78,7 @@ public class PlayerManager implements PlayerService{
 						.map(player, GetPlayersPositionResponse.class)).collect(Collectors.toList());
 		
 		return responses;
-	}
+	}*/
 
 	@Override
 	public List<GetPlayersPositionResponse> getPlayersPositionIdResponse(int id) {
@@ -91,12 +91,12 @@ public class PlayerManager implements PlayerService{
 		return responses;
 	}
 
-	@Override
+	/*	@Override
 	public List<GetPlayersTeamResponse> getPlayersTeamNameResponse(String team) {
 		List<Player> players = playerRepository.findByTeamName(team);
 		List<GetPlayersTeamResponse> responses = players.stream().map(player->this.mapperService.forResponse().map(player, GetPlayersTeamResponse.class)).collect(Collectors.toList());
 		return responses;
-	}
+	}*/
 
 	@Override
 	public List<GetPlayersTeamResponse> getPlayersTeamIdResponse(int id) {

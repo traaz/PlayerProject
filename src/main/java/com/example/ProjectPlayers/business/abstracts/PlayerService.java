@@ -19,9 +19,9 @@ public interface PlayerService {
 	void add(CreatePlayerRequest createPlayerRequest);
 	void update(int id, UpdatePlayerRequest updatePlayerRequest);
 	void delete(int id);
-	List<GetPlayersPositionResponse> getPlayersPositionNameResponse(String position);
+//	List<GetPlayersPositionResponse> getPlayersPositionNameResponse(String position);
 	List<GetPlayersPositionResponse> getPlayersPositionIdResponse(int id);
-	List<GetPlayersTeamResponse> getPlayersTeamNameResponse(String team);
+//	List<GetPlayersTeamResponse> getPlayersTeamNameResponse(String team);
 	List<GetPlayersTeamResponse> getPlayersTeamIdResponse(int id);
 	List<GetPlayersTeamAndPositionResponse> getPlayersTeamAndPositionResponse(int id, String position);
 
