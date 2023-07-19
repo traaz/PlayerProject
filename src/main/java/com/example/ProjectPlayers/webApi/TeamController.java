@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import com.example.ProjectPlayers.entities.Team;
 import lombok.AllArgsConstructor;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/teams")
 @AllArgsConstructor
 public class TeamController {

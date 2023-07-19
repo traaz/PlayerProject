@@ -2,6 +2,7 @@ package com.example.ProjectPlayers.webApi;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import com.example.ProjectPlayers.business.response.GetByIdPositionResponse;
 import lombok.AllArgsConstructor;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/positions")
 @AllArgsConstructor
 public class PositionController {

@@ -14,6 +14,7 @@ import com.example.ProjectPlayers.business.response.GetPlayersPositionResponse;
 import com.example.ProjectPlayers.business.response.GetPlayersTeamAndPositionResponse;
 import com.example.ProjectPlayers.business.response.GetPlayersTeamResponse;
 import com.example.ProjectPlayers.business.rules.PlayerBusinessRules;
+import com.example.ProjectPlayers.business.rules.TeamBusinessRules;
 import com.example.ProjectPlayers.core.utilities.mappers.ModelMapperService;
 import com.example.ProjectPlayers.dataAccess.abstracts.PlayerRepository;
 import com.example.ProjectPlayers.entities.Player;
@@ -26,6 +27,7 @@ public class PlayerManager implements PlayerService{
 	private PlayerRepository playerRepository;
 	private ModelMapperService mapperService;
 	private PlayerBusinessRules businessRules;
+	private TeamBusinessRules teamBusinessRules;
 
 	@Override
 	public List<GetAllPlayerResponse> getAll() {
@@ -46,7 +48,7 @@ public class PlayerManager implements PlayerService{
 	@Override
 	public void add(CreatePlayerRequest createPlayerRequest) {
 	
-		this.businessRules.checkIfTeamIdExists(createPlayerRequest.getTeamId());
+		this.teamBusinessRules.checkIfTeamIdExists(createPlayerRequest.getTeamId());
 		this.businessRules.checkIfPositionIdExists(createPlayerRequest.getPositionId());
 		this.businessRules.checkIfPlayerExists(createPlayerRequest.getName(), createPlayerRequest.getSurname(), createPlayerRequest.getTeamId());
 		Player player = this.mapperService.forRequest().map(createPlayerRequest, Player.class);
