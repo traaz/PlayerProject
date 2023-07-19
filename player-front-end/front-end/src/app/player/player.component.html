@@ -1,0 +1,26 @@
+<button type="button" class="btn btn-primary">Kaleci</button>
+<button type="button" class="btn btn-secondary">Defans</button>
+<button type="button" class="btn btn-success">Orta Saha</button>
+<button type="button" class="btn btn-danger">Forvet</button>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Team Name</th>
+      <th scope="col">Position Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let player of players">
+      <td>{{player.name}}</td>
+      <td>{{player.surname}}</td>
+      <td>{{player.teamName}}</td>
+      <td>{{player.positionName}}</td>
+
+    </tr>
+
+  </tbody>
+</table>
