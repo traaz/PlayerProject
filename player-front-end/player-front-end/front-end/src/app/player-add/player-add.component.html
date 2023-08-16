@@ -1,0 +1,53 @@
+<div class="content">
+  <div class="md-12">
+    <div class="card">
+      <div class="card-header"><h5>Oyuncu Ekle</h5></div>
+      <div class="card-body">
+        <form [formGroup]="playerAddForm">
+          <label>Oyuncu İsmi</label>
+            <div class="form-group">
+              <input type="text" id="playerName" formControlName="name" class="form-control">
+            </div>
+            <label>Oyuncu Soyismi</label>
+
+            <div class="form-group">
+              <input type="text" id="playerSurname" formControlName="surname" class="form-control" >
+            </div>
+
+            <label>Oyuncu Takımı</label>
+
+            <div class="form-group">
+              <div class="input-space">
+                <select  formControlName="team" id="">
+                  <option *ngFor="let team of teams" [ngValue]="team.id">
+                      {{team.name}}
+                  </option>
+                </select>
+              </div>
+
+            </div>
+            <label>Oyuncu Mevki</label>
+            <div class="form-group">
+              <div class="input-space">
+                <select  formControlName="position" id="">
+
+                  <option *ngFor="let position of positions"  [ngValue]="position.id" >
+                      {{position.name}}
+                  </option>
+                </select>
+              </div>
+
+            </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-success" (click)="add()">Ekle</button>
+        <button class="btn btn-fill btn-primary " style="margin-left:50px" routerLink="/players">Tüm Futbolcular</button>
+
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
