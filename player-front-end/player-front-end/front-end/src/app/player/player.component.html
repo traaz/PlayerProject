@@ -1,8 +1,5 @@
 
-<a routerLink="/players/position/1" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Kaleci</a>
-<a routerLink="/players/position/2" class="btn btn-secondary btn-lg active" role="button"  style="margin-left:10px;" aria-pressed="true">Defans</a>
-<a routerLink="/players/position/3" class="btn btn-success btn-lg active" role="button"  style="margin-left:10px;" aria-pressed="true">Orta Saha</a>
-<a routerLink="/players/position/4" class="btn btn-danger btn-lg active" role="button"  style="margin-left:10px;" aria-pressed="true">Forvet</a>
+
 
 <div class="form-group">
   <label for="filterText" class="form-label">Oyuncu Ara</label>
@@ -28,7 +25,7 @@
       <td>{{player.surname}}</td>
       <td>{{player.teamName}}</td>
       <td>{{player.positionName}}</td>
-      <button type="button" class="btn btn-danger active" style="margin-top: 5px;">Oyuncu Sil</button>
+      <button type="button" class="btn btn-danger active" style="margin-top: 5px;" (click)="delete(player.id)">Oyuncu Sil</button>
       <button type="button" class="btn btn-warning active" style="margin-left:10px; margin-top: 5px;">Güncelle</button>
       <br>
       <br>

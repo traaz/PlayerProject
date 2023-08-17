@@ -29,5 +29,8 @@ export class PlayerServiceService {
   add(player: CreatePlayer):Observable<Object>{
     return this.httpClient.post(this.apiUrl+"add", player)
   }
+  delete(playerId : number):Observable<Object>{
+    return this.httpClient.delete(this.apiUrl + playerId)
+  }
 
 }

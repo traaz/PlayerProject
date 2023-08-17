@@ -6,12 +6,12 @@
         <form [formGroup]="playerAddForm">
           <label>Oyuncu İsmi</label>
             <div class="form-group">
-              <input type="text" id="playerName" formControlName="name" class="form-control">
+              <input type="text" id="playerName" formControlName="name" class="form-control" placeholder="İsim Giriniz">
             </div>
             <label>Oyuncu Soyismi</label>
 
             <div class="form-group">
-              <input type="text" id="playerSurname" formControlName="surname" class="form-control" >
+              <input type="text" id="playerSurname" formControlName="surname" class="form-control" placeholder="Soyisim Giriniz">
             </div>
 
             <label>Oyuncu Takımı</label>
@@ -19,7 +19,8 @@
             <div class="form-group">
               <div class="input-space">
                 <select  formControlName="team" id="">
-                  <option *ngFor="let team of teams" [ngValue]="team.id">
+                  <option value="" disabled selected>Takım Seçiniz</option>
+                  <option *ngFor="let team of teams" [ngValue]="team.id" >
                       {{team.name}}
                   </option>
                 </select>
@@ -30,7 +31,7 @@
             <div class="form-group">
               <div class="input-space">
                 <select  formControlName="position" id="">
-
+                  <option value="" disabled selected>Mevki Seçiniz</option>
                   <option *ngFor="let position of positions"  [ngValue]="position.id" >
                       {{position.name}}
                   </option>

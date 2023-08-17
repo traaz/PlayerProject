@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { PlayerAddComponent } from './player-add/player-add.component';
 import { ToastrModule } from 'ngx-toastr';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +26,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass : "toast-bottom-right"
     })

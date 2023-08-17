@@ -55,10 +55,17 @@ export class PlayerAddComponent implements OnInit {
       //console.log(playerAdd)
       //console.log(this.playerAddForm.value.name)
       console.log(this.playerAddForm.value.team)
-      this.playerService.add(playerAdd).subscribe({
+      this.playerService.add(playerAdd).subscribe(response=>{
+        this.toastrService.success("Oyuncu Eklendi", "Başarılı")
 
-      }); //subscribe cunku observable
-      this.toastrService.success("Oyuncu Eklendi", "Başarılı")
+      },responseError =>{
+        this.toastrService.error("Oyuncu Listede Mevcut", "Hata")
+      }
+
+      ); //subscribe cunku observable
+
+    }else{
+      this.toastrService.info("İlgili Alanları Doldurunuz")
     }
 
 
