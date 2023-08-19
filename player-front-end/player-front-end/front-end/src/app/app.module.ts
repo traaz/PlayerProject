@@ -11,6 +11,7 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { PlayerAddComponent } from './player-add/player-add.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PlayerUpdateComponent } from './player-update/player-update.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TeamComponent,
     FilterPipePipe,
     PlayerAddComponent,
+    PlayerUpdateComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,30 +1,27 @@
 <div class="content">
   <div class="md-12">
     <div class="card">
-      <div class="card-header"><h5>Oyuncu Ekle</h5></div>
+      <div class="card-header"><h5>Oyuncu Güncelle</h5></div>
       <div class="card-body">
-        <form [formGroup]="playerAddForm">
+        <form [formGroup]="playerUpdateForm">
+
           <label>Oyuncu İsmi</label>
             <div class="form-group">
-              <input type="text" id="playerName" formControlName="name" class="form-control" placeholder="İsim Giriniz">
+              <input [ngModel]="player.name" type="text" id="playerName" formControlName="name" class="form-control" placeholder="İsim Giriniz">
             </div>
-
-
-
             <label>Oyuncu Soyismi</label>
 
             <div class="form-group">
-              <input type="text" id="playerSurname" formControlName="surname" class="form-control" placeholder="Soyisim Giriniz">
+              <input [ngModel]="player.surname" type="text" id="playerSurname" formControlName="surname" class="form-control" placeholder="Soyisim Giriniz">
             </div>
-
 
             <label>Oyuncu Takımı</label>
 
             <div class="form-group">
               <div class="input-space">
-                <select  formControlName="team" id="">
+                <select   formControlName="team" id="">
                   <option value="" disabled selected>Takım Seçiniz</option>
-                  <option *ngFor="let team of teams" [ngValue]="team.id" >
+                  <option  [ngModel]="player.teamName" *ngFor="let team of teams" [ngValue]="team.id" >
                       {{team.name}}
                   </option>
                 </select>
@@ -46,7 +43,7 @@
         </form>
       </div>
       <div class="card-footer">
-        <button class="btn btn-fill btn-success" (click)="add()">Ekle</button>
+        <button class="btn btn-fill btn-success" (click)="update(player.id)">Güncelle</button>
         <button class="btn btn-fill btn-primary " style="margin-left:50px" routerLink="/players">Tüm Futbolcular</button>
 
       </div>
@@ -56,3 +53,4 @@
 
 
 </div>
+

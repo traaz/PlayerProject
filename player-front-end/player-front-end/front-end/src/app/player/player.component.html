@@ -1,22 +1,25 @@
 
-
-
 <div class="form-group">
   <label for="filterText" class="form-label">Oyuncu Ara</label>
+
   <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Oyuncu İsmi Giriniz">
 </div>
+
 
 <div *ngIf="filterText" class="alert alert-primary">
  {{filterText}} aradınız.
 </div>
+<br>
 
 <table class="table">
-  <thead>
+  <thead >
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Surname</th>
-      <th scope="col">Team Name</th>
-      <th scope="col">Position Name</th>
+      <th scope="col">İsim</th>
+      <th scope="col">Soyisim</th>
+      <th scope="col">Takım</th>
+      <th scope="col">Mevki</th>
+      <th scope="col">Düzenle</th>
+
     </tr>
   </thead>
   <tbody>
@@ -25,8 +28,8 @@
       <td>{{player.surname}}</td>
       <td>{{player.teamName}}</td>
       <td>{{player.positionName}}</td>
-      <button type="button" class="btn btn-danger active" style="margin-top: 5px;" (click)="delete(player.id)">Oyuncu Sil</button>
-      <button type="button" class="btn btn-warning active" style="margin-left:10px; margin-top: 5px;">Güncelle</button>
+      <button type="button" class="btn btn-danger active btn-sm" style="margin-top: 10px;" (click)="delete(player.id)">Oyuncu Sil</button>
+      <button type="button" class="btn btn-warning active btn-sm" style="margin-left:10px; margin-top: 10px;" routerLink="players/update" routerLink="/players/{{player.id}}">Güncelle</button>
       <br>
       <br>
     </tr>

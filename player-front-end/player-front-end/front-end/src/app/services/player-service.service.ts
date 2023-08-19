@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Player} from '../models/player';
 import { Observable } from 'rxjs';
 import { CreatePlayer } from '../models/CreatePlayer';
+import { UpdatePlayer } from '../models/UpdatePlayer';
 
 
 
@@ -31,6 +32,13 @@ export class PlayerServiceService {
   }
   delete(playerId : number):Observable<Object>{
     return this.httpClient.delete(this.apiUrl + playerId)
+  }
+  update(playerId : number, player : UpdatePlayer):Observable<Object>{
+    return this.httpClient.put(this.apiUrl + playerId, player)
+  }
+  getPlayersById(playerId : number):Observable<Player>{
+    let newPath = this.apiUrl + "get/" + playerId
+    return this.httpClient.get<Player>(newPath);
   }
 
 }
