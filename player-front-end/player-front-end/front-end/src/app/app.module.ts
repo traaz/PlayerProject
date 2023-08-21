@@ -9,6 +9,7 @@ import { TeamComponent } from './team/team.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { PlayerAddComponent } from './player-add/player-add.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlayerUpdateComponent } from './player-update/player-update.component';
@@ -31,7 +32,8 @@ import { PlayerUpdateComponent } from './player-update/player-update.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass : "toast-bottom-right"
-    })
+    }),
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

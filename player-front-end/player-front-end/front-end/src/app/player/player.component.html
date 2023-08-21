@@ -1,6 +1,6 @@
 
 <div class="form-group">
-  <label for="filterText" class="form-label">Oyuncu Ara</label>
+  <label for="filterText" class="form-label">{{name}} Oyuncu Ara</label>
 
   <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Oyuncu İsmi Giriniz">
 </div>
@@ -23,7 +23,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let player of players | filterPipe:filterText">
+    <tr *ngFor="let player of players | filterPipe:filterText  | paginate: { itemsPerPage: 5, currentPage: p }">
+
       <td>{{player.name}}</td>
       <td>{{player.surname}}</td>
       <td>{{player.teamName}}</td>
@@ -36,3 +37,7 @@
 
   </tbody>
 </table>
+<div >
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+

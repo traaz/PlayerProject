@@ -11,9 +11,10 @@ import { Position } from '../models/position';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
-
+  p: number = 1;
   players : Player[] = [];
   filterText = "";
+  name=""
   constructor(private playerService: PlayerServiceService,
     private activatedRoute : ActivatedRoute, private toastrService : ToastrService) { } //parametreyi okumak icin urlden
 
@@ -35,11 +36,41 @@ export class PlayerComponent implements OnInit {
     })
   }
   getPlayersByTeam(teamId : number){
+    if(teamId == 1){
+      this.name = "Trabzonspor"
+    }
+    else if(teamId == 4){
+      this.name = "Fenerbahce"
+
+    }
+    else if ( teamId == 5){
+      this.name = "Galatasaray"
+
+    }
+    else if( teamId == 6){
+      this.name = "Besiktas"
+
+    }
     this.playerService.getPlayersByTeam(teamId).subscribe(response => {
       this.players = response
     })
   }
   getPlayersByPosition(positionId : number) {
+    if(positionId == 1){
+      this.name = "Kaleci"
+    }
+    else if(positionId == 2){
+      this.name = "Defans"
+
+    }
+    else if ( positionId == 3){
+      this.name = "Orta Saha"
+
+    }
+    else if( positionId == 4){
+      this.name = "Forvet"
+
+    }
     this.playerService.getPlayersByPosition(positionId).subscribe(response => {
       this.players = response
     })
