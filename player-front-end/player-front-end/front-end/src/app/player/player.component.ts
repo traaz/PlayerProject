@@ -14,7 +14,7 @@ export class PlayerComponent implements OnInit {
   p: number = 1;
   players : Player[] = [];
   filterText = "";
-  name=""
+  name : String = "";
   constructor(private playerService: PlayerServiceService,
     private activatedRoute : ActivatedRoute, private toastrService : ToastrService) { } //parametreyi okumak icin urlden
 
@@ -36,23 +36,12 @@ export class PlayerComponent implements OnInit {
     })
   }
   getPlayersByTeam(teamId : number){
-    if(teamId == 1){
-      this.name = "Trabzonspor"
-    }
-    else if(teamId == 4){
-      this.name = "Fenerbahce"
 
-    }
-    else if ( teamId == 5){
-      this.name = "Galatasaray"
-
-    }
-    else if( teamId == 6){
-      this.name = "Besiktas"
-
-    }
     this.playerService.getPlayersByTeam(teamId).subscribe(response => {
       this.players = response
+      for(var player of this.players){
+        this.name = player.teamName
+      }
     })
   }
   getPlayersByPosition(positionId : number) {
