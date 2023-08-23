@@ -39,7 +39,6 @@ public class Player {
 	
 	@ManyToOne
 	@JoinColumn(name = "position_id")
-	
 	private Position position;
 	
 	

@@ -62,6 +62,7 @@ export class PlayerComponent implements OnInit {
     }
     this.playerService.getPlayersByPosition(positionId).subscribe(response => {
       this.players = response
+
     })
   }
   delete(playerId : number){
@@ -69,7 +70,14 @@ export class PlayerComponent implements OnInit {
       response =>{
 
         this.toastrService.success("Oyuncu Silindi");
-        this.getPlayers();
+
+        this.activatedRoute.params.subscribe(params => {   //silme islemi yaptıktan liste rastgele resfres olmamalı ayni sayfada kalmali
+          if(params["teamId"]){
+            this.getPlayersByTeam(params["teamId"])
+          }else if(params["positionId"]){
+            this.getPlayersByPosition(params["positionId"])
+          }
+        })
       }
     )
   }

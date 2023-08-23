@@ -21,7 +21,6 @@ public class UpdatePlayerRequest {
 	@NotBlank
 	@Size(min = 3, max =50)
 	private String surname;
-	private String image_url;
 	@NotNull
 	@NotBlank
 	private int teamId;

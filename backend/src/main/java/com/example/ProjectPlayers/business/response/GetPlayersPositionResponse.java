@@ -15,5 +15,6 @@ public class GetPlayersPositionResponse {
 	private String surname;
 	private String image_url;
 	private String teamName;
+	private String positionName;
 
 }

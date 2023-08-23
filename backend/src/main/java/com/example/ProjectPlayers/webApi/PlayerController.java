@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,11 +40,18 @@ public class PlayerController {
 	public List<GetAllPlayerResponse> getAll(){
 		return playerService.getAll();
 	}
+	//http://localhost:8081/players/get/8
 	@GetMapping("/get/{id}")
 	public GetByIdResponse getById(@PathVariable int id) {
 		return playerService.getById(id);
 	}
-	@PostMapping()
+	//request param verdiğinde urlden almıyor path variable gibi.
+	//http://localhost:8081/players/get?id=8
+	/*@GetMapping("/get")  
+	public GetByIdResponse getById(@RequestParam int id) {
+		return playerService.getById(id);
+	}*/
+	@PostMapping("/add")
 	public void add(@RequestBody @Valid CreatePlayerRequest createPlayerRequest) {
 		playerService.add(createPlayerRequest);
 	}
@@ -77,5 +85,7 @@ public class PlayerController {
 	public List<GetPlayersTeamAndPositionResponse> getPlayersTeamAndPositionResponse(@PathVariable int id, @PathVariable String position){
 		return playerService.getPlayersTeamAndPositionResponse(id, position);
 	}
+	
+	
 	
 }

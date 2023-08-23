@@ -54,9 +54,13 @@ public class PlayerManager implements PlayerService{
 		Player player = this.mapperService.forRequest().map(createPlayerRequest, Player.class);
 		this.playerRepository.save(player);
 	}
+	
 
 	@Override
 	public void update(int id, UpdatePlayerRequest updatePlayerRequest) {
+		this.teamBusinessRules.checkIfTeamIdExists(updatePlayerRequest.getTeamId());
+		this.businessRules.checkIfPositionIdExists(updatePlayerRequest.getPositionId());
+
 		Player player = playerRepository.findById(id).get();
 		player = this.mapperService.forRequest().map(updatePlayerRequest, Player.class);
 		this.playerRepository.save(player);

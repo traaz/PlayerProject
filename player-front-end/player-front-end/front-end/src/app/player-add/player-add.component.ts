@@ -60,6 +60,7 @@ export class PlayerAddComponent implements OnInit {
         this.playerAddForm.reset()
 
       },responseError =>{
+        console.log(playerAdd)
         this.toastrService.error("Oyuncu Listede Mevcut", "Hata")
       }
 
