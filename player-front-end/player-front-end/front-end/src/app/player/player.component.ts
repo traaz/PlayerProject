@@ -71,11 +71,14 @@ export class PlayerComponent implements OnInit {
 
         this.toastrService.success("Oyuncu Silindi");
 
-        this.activatedRoute.params.subscribe(params => {   //silme islemi yaptıktan liste rastgele resfres olmamalı ayni sayfada kalmali
+        this.activatedRoute.params.subscribe(params => {   //silme islemi yaptıktan liste rastgele refresh olmamalı ayni sayfada kalmali
           if(params["teamId"]){
-            this.getPlayersByTeam(params["teamId"])
+            this.getPlayersByTeam(params["teamId"]) //bir takim sayfasindan silme yapildiktan sonra
           }else if(params["positionId"]){
-            this.getPlayersByPosition(params["positionId"])
+            this.getPlayersByPosition(params["positionId"]) //bir mevki sayfasindan silme yapildiktan sonra
+          }
+          else {
+            this.getPlayers() //tum futbolcular sayfasindan silme islemi yapilirsa
           }
         })
       }
