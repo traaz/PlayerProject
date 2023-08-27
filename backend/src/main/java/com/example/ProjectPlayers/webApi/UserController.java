@@ -4,6 +4,13 @@ package com.example.ProjectPlayers.webApi;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +30,7 @@ import lombok.AllArgsConstructor;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	
 	@PostMapping("/add")
 	public String add(@RequestBody  User user) {
 		return userService.addUser(user);
@@ -31,5 +39,10 @@ public class UserController {
 	public List<User> get() {
 		return userService.getAll();
 	}
+	 @PostMapping("/login")
+	    public String loginUser(@RequestBody User user){
+	       return userService.login(user);
+	        
+	    }
 	
 }
