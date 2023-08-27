@@ -1,5 +1,7 @@
 package com.example.ProjectPlayers.business.concretes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,10 @@ public class UserManager implements UserService{
 		user.setPassword(encoder.encode(user.getPassword()));
 		repository.save(user);
 		return "User Add";
+	}
+	@Override
+	public List<User> getAll() {
+		return repository.findAll();
 	}
 
 }
