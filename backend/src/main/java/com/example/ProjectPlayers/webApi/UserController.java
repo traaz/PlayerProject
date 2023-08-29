@@ -40,8 +40,8 @@ public class UserController {
 		return userService.getAll();
 	}
 	 @PostMapping("/login")
-	    public String loginUser(@RequestBody User user){
-	       return userService.login(user);
+	    public void loginUser(@RequestBody User user) {
+	        userService.login(user);
 	        
 	    }
 	

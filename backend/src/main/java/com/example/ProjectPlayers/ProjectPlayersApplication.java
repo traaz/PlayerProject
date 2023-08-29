@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.example.ProjectPlayers.core.utilities.exceptions.BadCredentialsException;
 import com.example.ProjectPlayers.core.utilities.exceptions.BusinessException;
 import com.example.ProjectPlayers.core.utilities.exceptions.ProblemDetails;
 import com.example.ProjectPlayers.core.utilities.exceptions.ValidationProblemDetails;
@@ -49,6 +50,13 @@ public class ProjectPlayersApplication {
 			validationProblemDetails.getValidationErrors().put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
 		return validationProblemDetails;
+	}
+	@ExceptionHandler
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	public ProblemDetails badcredentialException(BadCredentialsException badcredentialsExceptions) {
+		ProblemDetails problemDetails = new ProblemDetails();
+		problemDetails.setMessage(badcredentialsExceptions.getMessage());
+		return problemDetails;
 	}
 	
 	@Bean

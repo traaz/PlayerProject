@@ -24,8 +24,8 @@ public class SecurityConfig {
 		return http.csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/teams/**").permitAll()
-			.antMatchers("/players/**").authenticated()
-			.and().formLogin()
+			.antMatchers("/players/**").permitAll()
+		//	.and().formLogin()
 			.and().build();
 		
 	}

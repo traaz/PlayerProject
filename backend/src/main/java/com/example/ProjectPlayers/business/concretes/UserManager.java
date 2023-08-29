@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.ProjectPlayers.business.abstracts.UserService;
+import com.example.ProjectPlayers.core.utilities.exceptions.BadCredentialsException;
 import com.example.ProjectPlayers.dataAccess.abstracts.UserRepository;
 import com.example.ProjectPlayers.entities.User;
 
@@ -35,14 +36,14 @@ public class UserManager implements UserService{
 		return repository.findAll();
 	}
 	@Override
-	public String login(User user) {
+	public void login(User user) {
 		 Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 	                user.getName(), user.getPassword()));
 	        if(authentication != null) {
 	        	SecurityContextHolder.getContext().setAuthentication(authentication);
-		        return "User Log-in";
+		      //  return "Giriş Başarılı";
 	        }else {
-	        	return "User Not Found";
+	        	new BadCredentialsException("Giriş Hatalı");
 	        }
 	}
 
