@@ -1,0 +1,14 @@
+<div class="container">
+  <form  [formGroup]="loginFormGroup">
+      <h2 class="form-signin-heading">Giriş Yap</h2>
+      <p>
+          <label for="username" class="sr-only">Kullanıcı Adı</label>
+          <input type="text" id="username" formControlName="name" class="form-control" placeholder="Kullanıcı Adı Giriniz" required autofocus>
+  </p>
+          <p>
+              <label for="password" class="sr-only">Şifre</label>
+              <input type="password" id="password" formControlName="password" class="form-control" placeholder="Şifre Giriniz" required>
+  </p>
+              <button class="btn btn-lg btn-primary btn-block" (click)="login()">Giriş Yap</button>
+  </form>
+</div>
