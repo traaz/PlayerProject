@@ -1,6 +1,6 @@
 <div class="container">
-  <form  [formGroup]="loginFormGroup">
-      <h2 class="form-signin-heading">Giriş Yap</h2>
+  <form  [formGroup]="registerFormGroup">
+      <h2 class="form-signin-heading">Kayıt Ol</h2>
       <p>
           <label for="username" class="sr-only">Kullanıcı Adı</label>
           <input type="text" id="username" formControlName="name" class="form-control" placeholder="Kullanıcı Adı Giriniz" required autofocus>
@@ -9,12 +9,15 @@
               <label for="password" class="sr-only">Şifre</label>
               <input type="password" id="password" formControlName="password" class="form-control" placeholder="Şifre Giriniz" required>
   </p>
+  <p>
+    <label for="password" class="sr-only">Şifre Tekrar</label>
+    <input type="password" id="passwordAgain" formControlName="passwordAgain" class="form-control" placeholder="Şifre Tekrar Giriniz" required>
+</p>
 
 
-              <button class="btn btn-lg btn-primary btn-block" (click)="login()">Giriş Yap</button>
+              <button class="btn btn-lg btn-primary btn-block" (click)="register()">Kayıt Ol</button>
 
   </form>
-  <hr>
-  <a routerLink="/register" class="ml-5">Kayıt Ol</a>
+
 </div>
 

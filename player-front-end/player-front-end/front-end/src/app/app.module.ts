@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlayerUpdateComponent } from './player-update/player-update.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { LoginComponent } from './login/login.component';
     PlayerAddComponent,
     PlayerUpdateComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
