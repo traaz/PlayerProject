@@ -32,7 +32,7 @@ public class UserController {
 	private UserService userService;
 	
 	@PostMapping("/add")
-	public String add(@RequestBody  User user) {
+	public ResponseEntity<String> add(@RequestBody  User user) {
 		return userService.addUser(user);
 	}
 	@GetMapping("/getall")
