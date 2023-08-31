@@ -33,6 +33,13 @@
 
 
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+
+          <button type="button" class="btn btn-danger active btn-sm" *ngIf="authService.isAuthenticated()" (click)="logOut()">Çıkış Yap</button>
+
+
+      </ul>
 
     </div>
   </div>
