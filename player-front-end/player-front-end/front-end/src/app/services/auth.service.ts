@@ -14,7 +14,7 @@ export class AuthService {
 
   }
   loginUser(login : Login){
-    return this.httpClient.post(this.apiUrl+"login", login)
+    return this.httpClient.post(this.apiUrl+"login", login,{responseType: 'text'})
   }
   isAuthenticated(){
     if(localStorage.getItem("token")){

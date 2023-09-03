@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       let login = {name : this.loginFormGroup.value.name , password:this.loginFormGroup.value.password}
       this.authService.loginUser(login).subscribe(response =>{
         this.toastrService.success("Giriş Başarılı")
-        localStorage.setItem("token","abcsd")
+        localStorage.setItem("token",response)
         this.router.navigate(['/players'])
 
       },responseError =>{

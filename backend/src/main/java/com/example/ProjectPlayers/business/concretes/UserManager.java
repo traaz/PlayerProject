@@ -1,5 +1,6 @@
 package com.example.ProjectPlayers.business.concretes;
 
+import java.security.SecureRandom;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import com.example.ProjectPlayers.business.abstracts.UserService;
 import com.example.ProjectPlayers.core.utilities.exceptions.BadCredentialsException;
 import com.example.ProjectPlayers.dataAccess.abstracts.UserRepository;
 import com.example.ProjectPlayers.entities.User;
+import com.example.ProjectPlayers.security.CustomUserDetail;
+import com.example.ProjectPlayers.security.JwtService;
 
 import lombok.AllArgsConstructor;
 @Service
@@ -27,6 +30,8 @@ public class UserManager implements UserService{
     private PasswordEncoder encoder;
 	@Autowired
     private AuthenticationManager authenticationManager;
+	@Autowired
+    private JwtService jwtService;
 	@Override
 	public ResponseEntity<String>  addUser(User user) {
 		User checkUser = repository.findByName(user.getName());
@@ -34,8 +39,9 @@ public class UserManager implements UserService{
 			return new ResponseEntity<String>("Kullanici Mevcut", HttpStatus.BAD_REQUEST);
 		}else {
 			user.setPassword(encoder.encode(user.getPassword()));
+			
 			repository.save(user);
-			return new ResponseEntity<String>("Kullanici Eklendi", HttpStatus.OK);
+			return new ResponseEntity<String>("Kullaci Eklendi", HttpStatus.OK);
 
 		}
 		
@@ -45,15 +51,29 @@ public class UserManager implements UserService{
 		return repository.findAll();
 	}
 	@Override
-	public void login(User user) {
-		 Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-	                user.getName(), user.getPassword()));
-	        if(authentication != null) {
-	        	SecurityContextHolder.getContext().setAuthentication(authentication);
-		      //  return "Giriş Başarılı";
-	        }else {
-	        	new BadCredentialsException("Giriş Hatalı");
-	        }
-	}
+	public ResponseEntity<String> login(User user) {
+			
+		
+			 Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+		                user.getName(), user.getPassword()));
+			
+			if(authentication == null) {
+				return new ResponseEntity<String>("Hatalı Giriş", HttpStatus.BAD_REQUEST);
 
-}
+			}else {
+				 CustomUserDetail userDetail = new CustomUserDetail(user);
+			       String token = jwtService.generateToken(userDetail);
+			       
+			    	   return new ResponseEntity<String>(token, HttpStatus.OK);
+			}
+				
+			       
+				
+			 }
+				
+		}
+		
+			
+	
+
+
