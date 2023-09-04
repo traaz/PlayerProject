@@ -8,6 +8,8 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -43,8 +45,11 @@ public class JwtService {
                 .setSigningKey(getKey())
                 .build().parseClaimsJws(token).getBody();
     }
-
-    public boolean isTokenExpired(String token) {
+ 
+    	
+       
+    
+   public boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
 
@@ -60,10 +65,18 @@ public class JwtService {
                 .signWith(getKey(), SignatureAlgorithm.HS256).compact();
     }
 
-    public Boolean validateToken(String token, UserDetails userDetails) {
+  /*  public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }*/
+    
+    public Boolean validateToken(String token, UserDetails userDetails) {
+        final String username = extractUsername(token);
+        
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
+    
+    
     private Key getKey() {
         byte[] key = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(key);

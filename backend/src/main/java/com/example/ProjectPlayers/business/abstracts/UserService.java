@@ -9,6 +9,6 @@ import com.example.ProjectPlayers.entities.User;
 public interface UserService {
 	ResponseEntity<String>  addUser(User user);
 	List<User> getAll();
-	ResponseEntity<String> login(User user);
+	String login(User user);
 
 }

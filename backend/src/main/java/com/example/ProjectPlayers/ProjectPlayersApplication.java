@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.example.ProjectPlayers.core.utilities.exceptions.BadCredentialsException;
 import com.example.ProjectPlayers.core.utilities.exceptions.BusinessException;
+
 import com.example.ProjectPlayers.core.utilities.exceptions.ProblemDetails;
 import com.example.ProjectPlayers.core.utilities.exceptions.ValidationProblemDetails;
 
@@ -52,12 +53,14 @@ public class ProjectPlayersApplication {
 		return validationProblemDetails;
 	}
 	@ExceptionHandler
-	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
-	public ProblemDetails badcredentialException(BadCredentialsException badcredentialsExceptions) {
+	@ResponseStatus(code = HttpStatus.FORBIDDEN)
+	public ProblemDetails badcredentialException(org.springframework.security.authentication.BadCredentialsException badcredentialsExceptions) {
 		ProblemDetails problemDetails = new ProblemDetails();
-		problemDetails.setMessage(badcredentialsExceptions.getMessage());
+		problemDetails.setMessage("Hatalı Giriş");
 		return problemDetails;
 	}
+
+	
 	
 	@Bean
 	public ModelMapper getModelMapper() {

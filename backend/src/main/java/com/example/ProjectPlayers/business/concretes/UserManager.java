@@ -51,28 +51,19 @@ public class UserManager implements UserService{
 		return repository.findAll();
 	}
 	@Override
-	public ResponseEntity<String> login(User user) {
+	public String login(User user){
 			
-		
 			 Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 		                user.getName(), user.getPassword()));
-			
-			if(authentication == null) {
-				return new ResponseEntity<String>("Hatalı Giriş", HttpStatus.BAD_REQUEST);
 
-			}else {
-				 CustomUserDetail userDetail = new CustomUserDetail(user);
+				CustomUserDetail userDetail = new CustomUserDetail(user);
 			       String token = jwtService.generateToken(userDetail);
-			       
-			    	   return new ResponseEntity<String>(token, HttpStatus.OK);
+			       return token;
+				
 			}
-				
-			       
-				
-			 }
-				
-		}
-		
+	
+}
+
 			
 	
 
